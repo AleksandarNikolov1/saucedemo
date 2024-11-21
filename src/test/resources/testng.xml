@@ -1,0 +1,53 @@
+<suite name="Sauce Demo Suite" parallel="classes" thread-count="4"
+       data-provider-thread-count="4" verbose="1">>
+
+    <parameter name="env" value="prod"/>
+    <parameter name="browser" value="chrome"/>
+
+    <test name="Sauce Demo Tests - 1366x768">
+        <parameter name="width" value="1366"/>
+        <parameter name="height" value="768"/>
+        <packages>
+            <package name="com.saucedemo.tests.*"/>
+        </packages>
+        <groups>
+            <run>
+                <exclude name="e2e"/>
+                <include name="functional"/>
+            </run>
+        </groups>
+    </test>
+
+    <test name="Sauce Demo Tests - 768x1024">
+        <parameter name="width" value="768"/>
+        <parameter name="height" value="1024"/>
+        <packages>
+            <package name="com.saucedemo.tests.*"/>
+        </packages>
+        <groups>
+            <run>
+                <exclude name="e2e"/>
+                <include name="functional"/>
+            </run>
+        </groups>
+    </test>
+
+    <test name="Sauce Demo Tests - 375x667">
+        <parameter name="width" value="375"/>
+        <parameter name="height" value="667"/>
+        <packages>
+            <package name="com.saucedemo.tests.*"/>
+        </packages>
+        <groups>
+            <run>
+                <include name="e2e"/>
+                <include name="functional"/>
+            </run>
+        </groups>
+    </test>
+
+    <listeners>
+        <listener class-name="org.testng.reporters.XMLReporter"/>
+    </listeners>
+
+</suite>
